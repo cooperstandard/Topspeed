@@ -12,7 +12,7 @@ struct TopSpeedApp: App {
     var body: some Scene {
         WindowGroup {
             //ContentView()
-            DriverDetailView()
+            MainMenu()
         }
     }
 }

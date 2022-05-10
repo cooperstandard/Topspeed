@@ -9,9 +9,16 @@ import SwiftUI
 
 struct MainMenu: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            NavigationLink("Profile") {
+                RacerDetailView()
+            }
+        }
     }
+//        .navigationTitle("Main Menu")
 }
+        
+
 
 struct MainMenu_Previews: PreviewProvider {
     static var previews: some View {
