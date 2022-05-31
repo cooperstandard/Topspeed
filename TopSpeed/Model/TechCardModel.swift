@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct TechCard: Codable {
+    var techCardID : Int
+    
+    
+    
+}

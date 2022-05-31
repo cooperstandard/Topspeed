@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Race {
+struct Race: Codable {
     var racer : Racer
     var opponent : Racer
     
