@@ -22,20 +22,40 @@ struct RacerDetailView: View {
                 //Spacer()
             HStack {
                 Text("Name: ")
-                    .font(.title)
+                    .font(.title2)
                     .fontWeight(.medium)
                 Text(user.racer!.racerName!)
             }
-            Text("Hometown")
-                .font(.title2)
-            Text("phone number")
-                .font(.title2)
-            Text("email")
-                .font(.title2)
-            Text("wins")
-                .font(.title2)
-            Text("loses")
-                .font(.title2)
+            HStack {
+                Text("Hometown: ")
+                    .font(.title2)
+                    .fontWeight(.medium)
+                Text(user.racer!.hometown!)
+            }
+            HStack {
+                Text("phone number: ")
+                    .font(.title2)
+                    .fontWeight(.medium)
+                //Text(user.racer!.racerPhoneNumber!)
+            }
+            HStack {
+                Text("email: ")
+                    .font(.title2)
+                    .fontWeight(.medium)
+                Text(user.id)
+            }
+            HStack {
+                Text("wins: ")
+                    .font(.title2)
+                    .fontWeight(.medium)
+                Text("\(user.racer!.wins!)")
+            }
+            HStack {
+                Text("loses: ")
+                    .font(.title2)
+                    .fontWeight(.medium)
+                Text("\(user.racer!.losses!)")
+            }
             Spacer()
         
              

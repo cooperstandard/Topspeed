@@ -18,19 +18,16 @@ struct MessageList: View {
             
             
         } else {
-            //NavigationView {
-                List(user.messages, id: \.id) { message in
-                    NavigationLink(message.title, destination: Text(message.body))
-                    
-                }
-            //}
+            
+            List(user.messages, id: \.id) { message in
+                NavigationLink(message.title, destination: Text(message.body))
+                
+            }
             
             
         }
          
         
-        
-        //navigationTitle("Messages List")
     }
 }
 

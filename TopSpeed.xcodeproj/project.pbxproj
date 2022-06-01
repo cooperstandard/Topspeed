@@ -27,7 +27,6 @@
 		B89867BE2825A5520058E55D /* BikeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89867BD2825A5520058E55D /* BikeRow.swift */; };
 		B89ABA8C282AE38100DD7ACF /* BikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89ABA8B282AE38000DD7ACF /* BikeModel.swift */; };
 		B89C151E284156360000857C /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89C151D284156360000857C /* LogIn.swift */; };
-		B8F4C551282A215200CC9721 /* ResourceFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4C550282A215200CC9721 /* ResourceFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +54,6 @@
 		B89867BD2825A5520058E55D /* BikeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeRow.swift; sourceTree = "<group>"; };
 		B89ABA8B282AE38000DD7ACF /* BikeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeModel.swift; sourceTree = "<group>"; };
 		B89C151D284156360000857C /* LogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
-		B8F4C550282A215200CC9721 /* ResourceFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +141,6 @@
 				B8921A932820DC7D00542602 /* TechCardModel.swift */,
 				B852084E2821C84500FECBB5 /* RaceModel.swift */,
 				B89ABA8B282AE38000DD7ACF /* BikeModel.swift */,
-				B8F4C550282A215200CC9721 /* ResourceFetcher.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -219,7 +216,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8921A9A2820DCE700542602 /* RaceList.swift in Sources */,
-				B8F4C551282A215200CC9721 /* ResourceFetcher.swift in Sources */,
 				B8921A982820DCA300542602 /* TechCardList.swift in Sources */,
 				B82F5D48283F177A00AC4AFB /* MessageModel.swift in Sources */,
 				B8921AA02820DD6200542602 /* BracketDetail.swift in Sources */,
