@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B829E04F2846E58E007DC972 /* MessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B829E04E2846E58E007DC972 /* MessageList.swift */; };
+		B82F5D48283F177A00AC4AFB /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82F5D47283F177900AC4AFB /* MessageModel.swift */; };
+		B82F5D4A283F178400AC4AFB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82F5D49283F178400AC4AFB /* UserModel.swift */; };
+		B82F5D4D283F198E00AC4AFB /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82F5D4C283F198E00AC4AFB /* Handler.swift */; };
 		B852084F2821C84500FECBB5 /* RaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B852084E2821C84500FECBB5 /* RaceModel.swift */; };
 		B875F6A52820B063000D663E /* TopSpeedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B875F6A42820B063000D663E /* TopSpeedApp.swift */; };
 		B875F6A92820B06A000D663E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B875F6A82820B06A000D663E /* Assets.xcassets */; };
@@ -22,11 +26,14 @@
 		B8921AA02820DD6200542602 /* BracketDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8921A9F2820DD6200542602 /* BracketDetail.swift */; };
 		B89867BE2825A5520058E55D /* BikeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89867BD2825A5520058E55D /* BikeRow.swift */; };
 		B89ABA8C282AE38100DD7ACF /* BikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89ABA8B282AE38000DD7ACF /* BikeModel.swift */; };
-		B8C6ECE62829B27C00AC5AAF /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C6ECE52829B27C00AC5AAF /* MenuItem.swift */; };
-		B8F4C551282A215200CC9721 /* ResourceFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4C550282A215200CC9721 /* ResourceFetcher.swift */; };
+		B89C151E284156360000857C /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89C151D284156360000857C /* LogIn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B829E04E2846E58E007DC972 /* MessageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageList.swift; sourceTree = "<group>"; };
+		B82F5D47283F177900AC4AFB /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		B82F5D49283F178400AC4AFB /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		B82F5D4C283F198E00AC4AFB /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
 		B852084E2821C84500FECBB5 /* RaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceModel.swift; sourceTree = "<group>"; };
 		B875F6A12820B063000D663E /* TopSpeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopSpeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B875F6A42820B063000D663E /* TopSpeedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSpeedApp.swift; sourceTree = "<group>"; };
@@ -46,8 +53,7 @@
 		B8921AA22820DED900542602 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		B89867BD2825A5520058E55D /* BikeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeRow.swift; sourceTree = "<group>"; };
 		B89ABA8B282AE38000DD7ACF /* BikeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeModel.swift; sourceTree = "<group>"; };
-		B8C6ECE52829B27C00AC5AAF /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
-		B8F4C550282A215200CC9721 /* ResourceFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceFetcher.swift; sourceTree = "<group>"; };
+		B89C151D284156360000857C /* LogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +95,7 @@
 				B875F6A82820B06A000D663E /* Assets.xcassets */,
 				B875F6AA2820B06B000D663E /* Preview Content */,
 				B875F6B22820B0D8000D663E /* Info.plist */,
-				B8F4C550282A215200CC9721 /* ResourceFetcher.swift */,
+				B82F5D4C283F198E00AC4AFB /* Handler.swift */,
 			);
 			path = TopSpeed;
 			sourceTree = "<group>";
@@ -113,7 +119,8 @@
 				B8921A9B2820DCF800542602 /* RaceDetail.swift */,
 				B8921A9F2820DD6200542602 /* BracketDetail.swift */,
 				B89867BD2825A5520058E55D /* BikeRow.swift */,
-				B8C6ECE52829B27C00AC5AAF /* MenuItem.swift */,
+				B89C151D284156360000857C /* LogIn.swift */,
+				B829E04E2846E58E007DC972 /* MessageList.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -128,6 +135,8 @@
 		B875F6B52820B43D000D663E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B82F5D49283F178400AC4AFB /* UserModel.swift */,
+				B82F5D47283F177900AC4AFB /* MessageModel.swift */,
 				B8921A912820DC6E00542602 /* RacerModel.swift */,
 				B8921A932820DC7D00542602 /* TechCardModel.swift */,
 				B852084E2821C84500FECBB5 /* RaceModel.swift */,
@@ -207,14 +216,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8921A9A2820DCE700542602 /* RaceList.swift in Sources */,
-				B8F4C551282A215200CC9721 /* ResourceFetcher.swift in Sources */,
 				B8921A982820DCA300542602 /* TechCardList.swift in Sources */,
+				B82F5D48283F177A00AC4AFB /* MessageModel.swift in Sources */,
 				B8921AA02820DD6200542602 /* BracketDetail.swift in Sources */,
 				B89867BE2825A5520058E55D /* BikeRow.swift in Sources */,
+				B89C151E284156360000857C /* LogIn.swift in Sources */,
+				B82F5D4D283F198E00AC4AFB /* Handler.swift in Sources */,
 				B8921A922820DC6E00542602 /* RacerModel.swift in Sources */,
 				B875F6B72820B487000D663E /* RacerDetail.swift in Sources */,
-				B8C6ECE62829B27C00AC5AAF /* MenuItem.swift in Sources */,
+				B82F5D4A283F178400AC4AFB /* UserModel.swift in Sources */,
 				B852084F2821C84500FECBB5 /* RaceModel.swift in Sources */,
+				B829E04F2846E58E007DC972 /* MessageList.swift in Sources */,
 				B8921A9E2820DD0700542602 /* MainMenu.swift in Sources */,
 				B89ABA8C282AE38100DD7ACF /* BikeModel.swift in Sources */,
 				B8921A942820DC7D00542602 /* TechCardModel.swift in Sources */,
