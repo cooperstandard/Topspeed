@@ -12,6 +12,14 @@ import Foundation
 
 class Handler {
     
+    static func getAll(user: User) {
+        getRacer(user: user)
+        getMessages(user: user)
+        getBikes(user: user)
+        
+        
+    }
+    
     
     static func signIn(email: String, pass: String, user: User) {
         
@@ -84,16 +92,7 @@ class Handler {
         // perform the task
         task.resume()
     }
-    
-    
-    static func getAll(user: User) {
-        getRacer(user: user)
-        getMessages(user: user)
-        
-        
-        
-    }
-    
+   
     
     static func getRacer(user: User) {
         guard let url = URL(string: "https://swe.cooperstandard.org:8080/racer/\(user.racer!.racerID)") else {
@@ -123,6 +122,7 @@ class Handler {
         }.resume()
         
     }
+    
     
     static func getMessages(user: User) {
         let session = URLSession.shared
@@ -201,12 +201,92 @@ class Handler {
     }
     
     
-    static func getBikes() {
+    static func getBikes(user: User) {
+        let session = URLSession.shared
+        guard let url = URL(string: "https://swe.cooperstandard.org:8080/racer/\(user.racer!.racerID)/bikes") else {
+            print("Your API end point is Invalid")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET" //set http method as needed
+        
+        // add headers for the request
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("Bearer " + user.token, forHTTPHeaderField: "Authorization")
+        
+        // create dataTask using the session object to send data to the server
+        let task = session.dataTask(with: request) { data, response, error in
+            
+            if let error = error {
+                print("Request Error: \(error.localizedDescription)")
+                return
+            }
+            
+            // ensure there is valid response code returned from this HTTP response
+            let httpResponse = response as! HTTPURLResponse
+            
+            if !(200...299).contains(httpResponse.statusCode) {
+                print(httpResponse.statusCode)
+            }
+            
+            
+            // ensure there is data returned
+            guard let responseData = data else {
+                print("nil Data received from the server")
+                return
+            }
+            
+            do {
+                if let jsonResponse = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers) as? [String: Any] {
+                    //This is a terrible way to do this. I could not find a better way.
+                    //print(jsonResponse["messages"] ?? "No messages in server response")
+                    //print(jsonResponse)
+                    user.bikes = []
+                    if let array = jsonResponse["bikes"] as? NSArray {
+                        for obj in array {
+                            if var dict = obj as? NSDictionary as? Dictionary<String,Any> {
+                                user.bikes!.append(Bike(id: dict.removeValue(forKey: "bikeID") as! Int, bikeNum: dict.removeValue(forKey: "bikeNum") as! Int, bikeManufacturer: dict.removeValue(forKey: "bikeManufacturer") as! String , bikeModel: dict.removeValue(forKey: "bikeModel") as! String, bikeYear: dict.removeValue(forKey: "bikeYear") as! Int, bodyMake: dict.removeValue(forKey: "bodyMake") as! String, bodyYear: dict.removeValue(forKey: "bodyYear") as! Int, details: [:]))
+                                for key in dict.keys {
+                                    
+                                    user.bikes![user.bikes!.count - 1].details[key] = "\(dict[key]!)"
+                                }
+                                
+                                
+                                
+                            }
+                        }
+                        //print(user.bikes)
+                    } else {
+                        print("json response contained no bikes")
+                        
+                    }
+                    
+                    
+                    print("bikes successfully retrieved")
+                     
+
+                } else {
+                    print("data maybe corrupted or in wrong format")
+                    
+                    print(String(data: responseData, encoding: String.Encoding.utf8)!)
+                    throw URLError(.badServerResponse)
+                    
+                }
+                     
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        // perform the task
+        task.resume()
         
     }
     
     
-    static func postBike() {
+    static func postBike(user: User, bike: Bike) {
+        //this will post bikes to the api.
         
     }
     

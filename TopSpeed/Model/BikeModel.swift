@@ -10,8 +10,12 @@ import Foundation
 struct Bike: Codable {
     var id: Int
     var bikeNum: Int
-    var manufacturer: String
-    var model: String
-    var year: Int
+    var bikeManufacturer: String
+    var bikeModel: String
+    var bikeYear: Int
+    var bodyMake: String
+    var bodyYear: Int
     
+    var details: [String: String]
 }
+
