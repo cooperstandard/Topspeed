@@ -10,27 +10,28 @@ import Combine
 
 @main
 struct TopSpeedApp: App {
+    //App fatally crashes if invalid credentials are given for username and password.
     init() {
-        user = User(email: "test_user@test.com", pass: "password")
+        user = User(id: "")
+        
         
     }
     
-    @State var loggedIn : Bool = true;
+    @State var loggedIn : Bool = false;
     @State var user: User;
     
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                if loggedIn {
-                    MainMenu(user: user)
-                } else  {
-                    LogIn()
-                }
-                
+            if loggedIn {
+                MainMenu(user: $user)
+                    .preferredColorScheme(.light)
+            } else  {
+                LogIn(user: $user, loggedIn: $loggedIn)
+                    .preferredColorScheme(.light)
                     
             }
-            .preferredColorScheme(.light)
-            
+                
+                    
         }
     }
 }

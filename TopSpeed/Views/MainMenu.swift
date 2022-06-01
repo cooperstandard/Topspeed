@@ -9,17 +9,15 @@ import SwiftUI
 
 struct MainMenu: View {
     @State var id = 1;
-    @State var racer: Racer = Racer(racerID: 0, racerName: "request not completed")
-    var user: User
+    @Binding var user: User
     
-
     var body: some View {
         
         
         NavigationView {
             //ScrollView{
             VStack{
-                NavigationLink(destination: RacerDetailView(user: user)) {
+                NavigationLink(destination: RacerDetailView(user: $user)) {
                     Image("blankProfile")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -56,7 +54,7 @@ struct MainMenu: View {
                 }
                 
                 HStack {
-                    NavigationLink("Messages", destination: TechCardList())
+                    NavigationLink("Messages", destination: MessageList(user: $user))
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
                         .background(.red)
@@ -95,7 +93,7 @@ struct MainMenu: View {
         
     }
     
-    
+    /*
   
     func loadData() {
         guard let url = URL(string: "https://swe.cooperstandard.org:8080/racer/\(id)") else {
@@ -120,13 +118,16 @@ struct MainMenu: View {
             }
         }.resume()
     }
+    */
 }
         
 
 
 struct MainMenu_Previews: PreviewProvider {
+    @State static var user = User(email: "test_", pass: "password")
+    
     static var previews: some View {
-        MainMenu(user: User(email: "test@test.com", pass: "password123"))
+        MainMenu(user: $user)
             .previewInterfaceOrientation(.portrait)
     }
 }

@@ -9,6 +9,7 @@
 import Foundation
 
 
+
 class Handler {
     
     
@@ -66,8 +67,9 @@ class Handler {
                 if let jsonResponse = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers) as? [String: Any] {
                     
                     user.token = "" + String(describing: jsonResponse["access_token"]).dropFirst(9).dropLast(1)
-                    print(user.token)
+                    //print(user.token)
                     user.racer =  Racer(racerID: jsonResponse["racerID"] as! Int)
+                    print("signin successful")
                     getAll(user: user)
                     
                     // handle json response
@@ -133,14 +135,9 @@ class Handler {
         request.httpMethod = "GET" //set http method as needed
         
         // add headers for the request
-        //request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        //guard let token = token else { return }
-        
         request.addValue("Bearer " + user.token, forHTTPHeaderField: "Authorization")
-        //print(token)
-        print(request.allHTTPHeaderFields!)
         
         // create dataTask using the session object to send data to the server
         let task = session.dataTask(with: request) { data, response, error in
@@ -164,12 +161,34 @@ class Handler {
                 return
             }
             
-            let messages = String(data: responseData, encoding: String.Encoding.utf8)
-            print(messages)
-            print("successful")
-            return
-            
-            
+            do {
+                if let jsonResponse = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers) as? [String: Any] {
+                    //This is a terrible way to do this. I could not find a better way.
+                    //print(jsonResponse["messages"] ?? "No messages in server response")
+                    if let array = jsonResponse["messages"] as? NSArray {
+                        for obj in array {
+                            if let dict = obj as? NSDictionary {
+                                user.messages.append(Message.init(id: dict.value(forKey: "messageID") as! Int, title: dict.value(forKey: "title") as! String, body: dict.value(forKey: "body") as! String, timeSent: dict.value(forKey: "timeSent") as? String))
+                            }
+                        }
+                    } else {
+                        print("json response contained no messages")
+                        user.messages[0] = Message(id: 0, title: "no messages", body: "You have no messages yet, refresh and check again later.", timeSent: Date.now.ISO8601Format())
+                    }
+                    
+                    //print(user.messages)
+                    print("messages successfully retrieved")
+
+                } else {
+                    print("data maybe corrupted or in wrong format")
+                    
+                    print(String(data: responseData, encoding: String.Encoding.utf8)!)
+                    throw URLError(.badServerResponse)
+                    
+                }
+            } catch let error {
+                print(error.localizedDescription)
+            }
         }
         // perform the task
         task.resume()

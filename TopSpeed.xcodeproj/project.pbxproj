@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B829E04F2846E58E007DC972 /* MessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B829E04E2846E58E007DC972 /* MessageList.swift */; };
 		B82F5D48283F177A00AC4AFB /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82F5D47283F177900AC4AFB /* MessageModel.swift */; };
 		B82F5D4A283F178400AC4AFB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82F5D49283F178400AC4AFB /* UserModel.swift */; };
 		B82F5D4D283F198E00AC4AFB /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82F5D4C283F198E00AC4AFB /* Handler.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B829E04E2846E58E007DC972 /* MessageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageList.swift; sourceTree = "<group>"; };
 		B82F5D47283F177900AC4AFB /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		B82F5D49283F178400AC4AFB /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B82F5D4C283F198E00AC4AFB /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				B8921A9F2820DD6200542602 /* BracketDetail.swift */,
 				B89867BD2825A5520058E55D /* BikeRow.swift */,
 				B89C151D284156360000857C /* LogIn.swift */,
+				B829E04E2846E58E007DC972 /* MessageList.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				B875F6B72820B487000D663E /* RacerDetail.swift in Sources */,
 				B82F5D4A283F178400AC4AFB /* UserModel.swift in Sources */,
 				B852084F2821C84500FECBB5 /* RaceModel.swift in Sources */,
+				B829E04F2846E58E007DC972 /* MessageList.swift in Sources */,
 				B8921A9E2820DD0700542602 /* MainMenu.swift in Sources */,
 				B89ABA8C282AE38100DD7ACF /* BikeModel.swift in Sources */,
 				B8921A942820DC7D00542602 /* TechCardModel.swift in Sources */,

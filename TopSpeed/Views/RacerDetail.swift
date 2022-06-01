@@ -11,7 +11,7 @@ import SwiftUI
 import Combine
 
 struct RacerDetailView: View {
-    var user : User
+    @Binding var user : User
     var body: some View {
         VStack {
             //ScrollView {
@@ -53,7 +53,8 @@ struct RacerDetailView: View {
 }
 
 struct DriverDetailView_Previews: PreviewProvider {
+    @State static var user = User(email: "test_", pass: "password")
     static var previews: some View {
-        RacerDetailView(user: User(email: "test@test.com", pass: "password123"))
+        RacerDetailView(user: $user)
     }
 }
