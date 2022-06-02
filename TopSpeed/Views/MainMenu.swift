@@ -67,7 +67,19 @@ struct MainMenu: View {
                         .background(.red)
                 
                 }
+                
+                //for testing bikes
+                HStack{
+                    Button("Post Bike 1", action: {guard let bike = user.bikes?.first else {return};
+                                                    Handler.postBike(user: user, bike: bike)})
                     
+                    
+                    Button("get bikes", action: {Handler.getBikes(user: user)})
+                    
+                    Button("print bikes", action: {print(user.bikes)})
+                    
+                
+                }
                 
                 
             }
