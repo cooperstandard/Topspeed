@@ -9,6 +9,7 @@ import Foundation
 
 struct Bike: Codable {
     var id: Int
+    var racerID: Int
     var bikeNum: Int
     var bikeManufacturer: String
     var bikeModel: String
