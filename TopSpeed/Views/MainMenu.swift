@@ -76,7 +76,11 @@ struct MainMenu: View {
                     
                     Button("get bikes", action: {Handler.getBikes(user: user)})
                     
-                    Button("print bikes", action: {print(user.bikes)})
+                    Button("print bikes", action: {guard let bikes = user.bikes else {return}
+                                                    for bike in bikes {
+                                                        print(bike)
+                        
+                                                    }})
                     
                 
                 }

@@ -249,7 +249,7 @@ class Handler {
                             if var dict = obj as? NSDictionary as? Dictionary<String,Any> {
                                 user.bikes!.append(Bike(id: dict.removeValue(forKey: "bikeID") as! Int, racerID: jsonResponse["racerID"] as! Int, bikeNum: dict.removeValue(forKey: "bikeNum") as! Int, bikeManufacturer: dict.removeValue(forKey: "bikeManufacturer") as! String , bikeModel: dict.removeValue(forKey: "bikeModel") as! String, bikeYear: dict.removeValue(forKey: "bikeYear") as! Int, bodyMake: dict.removeValue(forKey: "bodyMake") as! String, bodyYear: dict.removeValue(forKey: "bodyYear") as! Int, details: [:]))
                                 for key in dict.keys {
-                                    
+                                    //fills in the bikes 'details' dictionary with the remaining fields in dict
                                     user.bikes![user.bikes!.count - 1].details[key] = "\(dict[key]!)"
                                 }
                                 
