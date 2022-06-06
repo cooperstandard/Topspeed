@@ -11,6 +11,18 @@ struct MainMenu: View {
     @State var id = 1;
     @Binding var user: User
     
+    
+    let bikeEx = Bike(racerID: 1)
+    let engMake = ""
+    let engYear = ""
+    let cubicCM = ""
+    let wheelBase = ""
+    let fuelType = ""
+    let shippingWT = ""
+    let  numCylinders = ""
+    
+    
+    
     var body: some View {
         
         
@@ -26,7 +38,7 @@ struct MainMenu: View {
                 //.onAppear(perform: loadData)
                 
                 HStack {
-                    NavigationLink("Tech Cards", destination: TechCardList())
+                    NavigationLink("Bikes", destination: BikeList(user: $user))
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
                         .background(.red)
@@ -40,7 +52,7 @@ struct MainMenu: View {
                 }
                 
                 HStack {
-                    NavigationLink("Points Standing", destination: TechCardList())
+                    NavigationLink("Add Bike", destination: BikeAdd(user: $user, bike: bikeEx, wheelBase: wheelBase, engMake: engMake, engYear: engYear, cubicCM: cubicCM, fuelType: fuelType, shippingWT: shippingWT, numCylinders: numCylinders))
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
                         .background(.red)
