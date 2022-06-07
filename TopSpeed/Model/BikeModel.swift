@@ -27,7 +27,7 @@ struct Bike: Codable {
         self.bikeYear = 0
         self.bodyMake = ""
         self.bodyYear = 0
-        self.details = ["engMake": "", "engYear": "", "cubicCM": "", "wheelBase": "", "fuelType": "Nitro", "shippingWT": "", "numCylinders": ""]
+        self.details = [:]
     }
     
     init(id: Int, racerID: Int, bikeNum: Int, bikeManufacturer: String, bikeModel: String, bikeYear: Int, bodyMake: String, bodyYear: Int ,details: [String: String]){

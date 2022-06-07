@@ -100,7 +100,7 @@ struct BikeAdd: View {
                         .padding()
                         .font(.subheadline)
                     TextField("Honda ", text: $engMake)//{
-                       // .onChange(of: engMake, perform: bike.details["engMake"] = engMake)
+                       // .onChange(of: $engMake, perform: bike.details["engMake"] = engMake)
                 //    }
                         .padding()
                         .background(Color.gray.opacity(0.2).cornerRadius(10))
