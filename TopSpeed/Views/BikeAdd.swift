@@ -10,13 +10,14 @@ import SwiftUI
 struct BikeAdd: View {
     @Binding var user: User
     @State var bike: Bike
-    @State var wheelBase: String
-    @State var engMake: String
-    @State var engYear: String
-    @State var cubicCM: String
-    @State var fuelType: String
-    @State var shippingWT: String
-    @State var numCylinders: String
+    @State var wheelBase: String = ""
+    @State var engMake: String = ""
+    @State var engYear: String = ""
+    @State var cubicCM: String = ""
+    @State var fuelType: String = ""
+    @State var shippingWT: String = ""
+    @State var numCylinders: String = ""
+    
 
     var body: some View {
     
@@ -139,7 +140,8 @@ struct BikeAdd: View {
                 
                
             }.padding(.horizontal)
-                       Button(action: {
+            
+            Button(action: {
                 addPostBike(user: user,bike: bike)
                 
                 
@@ -154,27 +156,32 @@ struct BikeAdd: View {
             }
             ).padding()
         
-        .navigationTitle("Add New Bike")
+        //.navigationTitle("Add New Bike")
         
            
         }
         }
         
     }
-        func saveDetails(user: User, bike: Bike){
-            self.bike.racerID = user.racer!.racerID
-            self.bike.details.updateValue(engMake, forKey: "engMake")
-            self.bike.details.updateValue(engYear, forKey: "engYear")
-            self.bike.details.updateValue(cubicCM, forKey: "cubicCM")
-            self.bike.details.updateValue(wheelBase, forKey: "wheelBase")
-            self.bike.details.updateValue(fuelType, forKey: "fuelType")
-            self.bike.details.updateValue(shippingWT, forKey: "shippingWT")
-            self.bike.details.updateValue(numCylinders, forKey: "numClyinders")
-        }
+    
+    func saveDetails(){
+        bike.racerID = user.racer!.racerID
+        bike.details["cubicCM"] = cubicCM
+        bike.details.updateValue(engMake, forKey: "engMake")
+        bike.details.updateValue(engYear, forKey: "engYear")
+        bike.details.updateValue(wheelBase, forKey: "wheelBase")
+        bike.details.updateValue(fuelType, forKey: "fuelType")
+        bike.details.updateValue(shippingWT, forKey: "shippingWT")
+        bike.details.updateValue(numCylinders, forKey: "numClyinders")
+    }
     func addPostBike (user: User, bike: Bike){
         // saves the bike and posts it as a user
         // do we need to append it to or will post bike and then get bike
-        saveDetails(user: user, bike: bike)
+        saveDetails()
+        print("new bike")
+        print(bike)
+        print("existing bike")
+        print(user.bikes!.first)
         Handler.postBike(user: user, bike: bike)
     }
     /*
@@ -190,12 +197,14 @@ struct BikeAdd: View {
         self.user = user
 
     }
-    */
+     */
+    
 }
 struct BikeAdd_Previews: PreviewProvider {
     @State static var user = User(email: "test_", pass: "password")
     
-    @State static var bikeEx = Bike(racerID: user.racer!.racerID)
+    @State static var bikeEx = Bike(racerID: 0)
+    /*
     @State static var engMake = ""
     @State static var engYear = ""
     @State static var cubicCM = ""
@@ -203,11 +212,11 @@ struct BikeAdd_Previews: PreviewProvider {
     @State static var fuelType = ""
     @State static var shippingWT = ""
     @State static var numCylinders = ""
-    
+    */
 
     static var previews: some View {
         
-        BikeAdd(user: $user, bike: bikeEx, wheelBase: wheelBase, engMake: engMake, engYear: engYear, cubicCM: cubicCM, fuelType: fuelType, shippingWT: shippingWT, numCylinders: numCylinders)
+        BikeAdd(user: $user, bike: bikeEx)
             
         
     }

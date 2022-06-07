@@ -11,7 +11,7 @@ struct MainMenu: View {
     @State var id = 1;
     @Binding var user: User
     
-    
+    /*
     let bikeEx = Bike(racerID: 1)
     let engMake = ""
     let engYear = ""
@@ -20,7 +20,7 @@ struct MainMenu: View {
     let fuelType = ""
     let shippingWT = ""
     let  numCylinders = ""
-    
+    */
     
     
     var body: some View {
@@ -52,7 +52,7 @@ struct MainMenu: View {
                 }
                 
                 HStack {
-                    NavigationLink("Add Bike", destination: BikeAdd(user: $user, bike: bikeEx, wheelBase: wheelBase, engMake: engMake, engYear: engYear, cubicCM: cubicCM, fuelType: fuelType, shippingWT: shippingWT, numCylinders: numCylinders))
+                    NavigationLink("Add Bike", destination: BikeAdd(user: $user, bike: Bike(racerID: 0)))
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
                         .background(.red)
