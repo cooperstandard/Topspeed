@@ -155,6 +155,11 @@ struct BikeAdd: View {
                 
             }
             ).padding()
+            
+            Button("Fill Bike", action:{
+                addBike()
+                NavigationLink("BikeList", destination: BikeList(user: $user))
+            })
         
         //.navigationTitle("Add New Bike")
         
@@ -163,7 +168,22 @@ struct BikeAdd: View {
         }
         
     }
-    
+
+    func addBike(){
+        bike.racerID = 1
+        engMake = "Honda"
+        engYear = "2014"
+        cubicCM = "50.8"
+        wheelBase =  "67.98"
+        fuelType = "Nitro"
+        shippingWT = "500.25"
+        numCylinders = "4"
+        bike.bodyYear = 2020
+        bike.bodyMake = "Kawa"
+        bike.bikeManufacturer = "Manufacturer 4"
+        bike.bikeModel = "Fast"
+
+    }
     func saveDetails(){
         bike.racerID = user.racer!.racerID
         bike.details["cubicCM"] = cubicCM

@@ -51,8 +51,8 @@ struct MainMenu: View {
                         .background(.red)
                 }
                 
-                HStack {
-                    NavigationLink("Add Bike", destination: BikeAdd(user: $user, bike: Bike(racerID: 0)))
+                HStack { // add this link to a plus button in the toolbar of bikeslist
+                    NavigationLink("Add Bike", destination: BikeAdd(user: $user, bike: Bike(racerID: 0)))// racer id gets set with post bike
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
                         .background(.red)
