@@ -10,7 +10,7 @@ import SwiftUI
 struct MessageList: View {
     @Binding var user: User
     var body: some View {
-        
+       
         if(user.messages.last?.id == 0) {
             Text("No messages found\nplease refresh or check back later")
                 .font(.title)
@@ -22,6 +22,8 @@ struct MessageList: View {
             List(user.messages, id: \.id) { message in
                 NavigationLink(message.title, destination: Text(message.body))
                 
+            }.refreshable {
+               Handler.getMessages(user: user)
             }
             
             

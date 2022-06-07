@@ -165,12 +165,14 @@ class Handler {
                 if let jsonResponse = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers) as? [String: Any] {
                     //This is a terrible way to do this. I could not find a better way.
                     //print(jsonResponse["messages"] ?? "No messages in server response")
+                    user.messages.removeAll()
                     if let array = jsonResponse["messages"] as? NSArray {
                         for obj in array {
                             if let dict = obj as? NSDictionary {
                                 user.messages.append(Message.init(id: dict.value(forKey: "messageID") as! Int, title: dict.value(forKey: "title") as! String, body: dict.value(forKey: "body") as! String, timeSent: dict.value(forKey: "timeSent") as? String))
                             }
                         }
+                        
                     } else {
                         print("json response contained no messages")
                         user.messages[0] = Message(id: 0, title: "no messages", body: "You have no messages yet, refresh and check again later.", timeSent: Date.now.ISO8601Format())
