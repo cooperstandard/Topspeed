@@ -208,6 +208,7 @@ struct BikeAdd: View {
 
     }
     func saveDetails(){
+        //bike.racerID = user.racer!.racerID
         bike.bodyMake = bodyMake
         bike.bodyYear = bodyYear
         bike.bikeNum = bikeNum
@@ -229,8 +230,8 @@ struct BikeAdd: View {
         saveDetails()
         print("new bike")
         print(bike)
-        print("existing bike")
-        print(user.bikes!.first)
+        //print("existing bike")
+        //print(user.bikes!.first)
         Handler.postBike(user: user, bike: bike)
     }
     /*
