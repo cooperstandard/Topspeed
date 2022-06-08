@@ -23,6 +23,7 @@
 		B875F6A92820B06A000D663E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B875F6A82820B06A000D663E /* Assets.xcassets */; };
 		B875F6AC2820B06B000D663E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B875F6AB2820B06B000D663E /* Preview Assets.xcassets */; };
 		B875F6B72820B487000D663E /* RacerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B875F6B62820B487000D663E /* RacerDetail.swift */; };
+		B8783E762851335800CE0842 /* TourneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8783E752851335800CE0842 /* TourneyModel.swift */; };
 		B8921A922820DC6E00542602 /* RacerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8921A912820DC6E00542602 /* RacerModel.swift */; };
 		B8921A942820DC7D00542602 /* TechCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8921A932820DC7D00542602 /* TechCardModel.swift */; };
 		B8921A962820DC9100542602 /* TechCardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8921A952820DC9100542602 /* TechCardDetail.swift */; };
@@ -54,6 +55,7 @@
 		B875F6AB2820B06B000D663E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B875F6B22820B0D8000D663E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B875F6B62820B487000D663E /* RacerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacerDetail.swift; sourceTree = "<group>"; };
+		B8783E752851335800CE0842 /* TourneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourneyModel.swift; sourceTree = "<group>"; };
 		B8921A912820DC6E00542602 /* RacerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacerModel.swift; sourceTree = "<group>"; };
 		B8921A932820DC7D00542602 /* TechCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechCardModel.swift; sourceTree = "<group>"; };
 		B8921A952820DC9100542602 /* TechCardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechCardDetail.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				B852084E2821C84500FECBB5 /* RaceModel.swift */,
 				B89ABA8B282AE38000DD7ACF /* BikeModel.swift */,
 				1CAD54BC28500E8300E13D74 /* TechCheckModel.swift */,
+				B8783E752851335800CE0842 /* TourneyModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8921A9A2820DCE700542602 /* RaceList.swift in Sources */,
+				B8783E762851335800CE0842 /* TourneyModel.swift in Sources */,
 				B8921A982820DCA300542602 /* TechCardList.swift in Sources */,
 				B82F5D48283F177A00AC4AFB /* MessageModel.swift in Sources */,
 				1CAD54BF28503DFB00E13D74 /* SignUp.swift in Sources */,

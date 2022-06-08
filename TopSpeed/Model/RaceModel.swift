@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct Race: Codable {
+struct Race: Codable, Comparable {
+    static func < (lhs: Race, rhs: Race) -> Bool {
+        return (lhs.motoID <= rhs.motoID)
+    }
+    
     var racerID : Int
     var heatID : Int
     var motoID : Int

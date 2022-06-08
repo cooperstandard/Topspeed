@@ -102,6 +102,9 @@ struct MainMenu: View {
                         .foregroundColor(.black)
                         .background(Color.blue.opacity(0.2).cornerRadius(10))
                         .padding()
+                    
+                    NavigationLink("Tech Card Check", destination: TechCheckView(user: $user, techCheck: TechCheck()))
+                    
 
                 
                 }

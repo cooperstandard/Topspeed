@@ -12,6 +12,7 @@ class User: Codable {
     var next : Race?
     var future : [Race]?
     var messages : [Message] = [Message(id: 0, title: "empty", body: "empty", timeSent: "never")]
+    var tourneys : [Tourney] = []
     
     
     init(id: String) {

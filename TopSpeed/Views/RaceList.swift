@@ -16,7 +16,7 @@ struct RaceList: View {
             Text("Past Races: ")
                 .padding()
             if user.past != nil {
-                List(user.past!, id: \.motoID) { race in
+                List(user.past!.sorted(by: <), id: \.motoID) { race in
                     NavigationLink("Moto id: \(race.motoID)", destination: RaceDetail(race: race))
                     
                 }
@@ -27,7 +27,7 @@ struct RaceList: View {
             Text("Future Races: ")
                 .padding()
             if user.future != nil {
-                List(user.future!, id: \.motoID) { race in
+                List(user.future!.sorted(by: >), id: \.motoID) { race in
                     NavigationLink("Moto id: \(race.motoID)", destination: RaceDetail(race: race))
                     
                 }

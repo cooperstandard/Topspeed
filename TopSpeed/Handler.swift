@@ -19,6 +19,9 @@ class Handler {
         getRaces(user: user, filter: "future")
         getRaces(user: user, filter: "next")
         getRaces(user: user, filter: "past")
+        user.tourneys = []
+        getTourneys(user: user, filter: "current")
+        getTourneys(user: user, filter: "future")
         
         
     }
@@ -126,6 +129,74 @@ class Handler {
         
     }
     
+    static func getTourneys(user: User, filter: String) {
+        guard let url = URL(string: "https://swe.cooperstandard.org:8080/tourneys?filter=\(filter)") else {
+            print("Your API end point is Invalid")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET" //set http method as POST
+        
+        // add headers for the request
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type") // change as per server requirements
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("Bearer \(user.token)", forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print(error)
+                return
+            }
+            if let data = data {
+                if let response = try? JSONDecoder().decode([Tourney].self, from: data) {
+                    user.tourneys.append(contentsOf: response)
+                    print("\(filter) tourneys retrieved")
+                    for var tourney in user.tourneys {
+                        //getClasses(user: user, tourney: &tourney)
+                    }
+                    return
+                } else {
+                    print("get \(filter) tourneys failed")
+                }
+            }
+        }.resume()
+        
+        
+        
+        
+    }
+    
+    static func getClasses(user: User,  tourney: Tourney){
+        
+        guard let url = URL(string: "https://swe.cooperstandard.org:8080/tourney/\(tourney.tourneyID)/classes") else {
+            print("Your API end point is Invalid")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET" //set http method as POST
+        
+        // add headers for the request
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type") // change as per server requirements
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("Bearer \(user.token)", forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print(error)
+                return
+            }
+            if let data = data {
+                if let response = try? JSONDecoder().decode([String].self, from: data) {
+                    //tourney.classes.append(contentsOf: response)
+                    return
+                } else {
+                    print("get classes for tourney \(tourney.tourneyID) failed")
+                }
+            }
+        }.resume()
+                    
+    }
+    
     
     static func getMessages(user: User) {
         let session = URLSession.shared
@@ -202,7 +273,7 @@ class Handler {
     
     
     static func getRaces(user: User, filter: String) {
-        guard let url = URL(string: "https://swe.cooperstandard.org:8080/racer/\(user.racer!.racerID)/races?filer=\(filter)") else {
+        guard let url = URL(string: "https://swe.cooperstandard.org:8080/racer/\(user.racer!.racerID)/races?filter=\(filter)") else {
             print("Your API end point is Invalid")
             return
         }
