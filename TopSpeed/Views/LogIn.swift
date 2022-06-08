@@ -18,9 +18,10 @@ struct LogIn: View {
    
     
     var body: some View {
+        Spacer()
         VStack {
             Text("Log In")
-                .font(.title)
+                .font(.title).padding(.top).padding(.top)
             HStack {
                 Text("Email ")
                 TextField("type here", text: $email)
@@ -37,7 +38,7 @@ struct LogIn: View {
                     .padding()
                     .border(Color(UIColor.separator))
             }.padding()
-            
+            // sign in uses their token
             Button(action: {
                 user.id = email
                 Handler.signIn(email: email, pass: password, user: user)
@@ -45,7 +46,30 @@ struct LogIn: View {
                 
             }) {
                 Text("Sign in")
-            }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.blue.cornerRadius(10))
+                .foregroundColor(.white)
+                .font(.headline)
+            }.padding().padding(.bottom)
+            Spacer()
+            
+            
+            //sign up button at the bottom logs a new user
+            Button(action:{
+                NavigationLink("Sign up", destination: SignUp(user: $user, loggedIn: $loggedIn))
+                
+            }){
+                    
+                    Text("Sign up")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue.cornerRadius(10))
+                        .foregroundColor(.white)
+                        .font(.headline)
+                }.padding()
+            
+          
         
             
         }

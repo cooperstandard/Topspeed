@@ -16,14 +16,17 @@ struct BikeDetail: View {
   
     var body: some View {
         ScrollView{
+        VStack{
             Image("blankProfile").resizable().scaledToFit()
-         VStack{// Engine Stuff
-             Text("BikeNum:     \(bike.bikeNum)").font(.title2)
-                 .fontWeight(.medium)
-             Text("Bike Manufacturure:   \(bike.bikeManufacturer) ")
-                             .padding()
-             Text("Bike Year:  \(bike.bikeYear)").padding()
-             
+            Section("Bike Details"){
+                VStack{// Engine Stuff
+                     Text("BikeNum:     \(bike.bikeNum)").font(.title2)
+                         .fontWeight(.medium)
+                     Text("Bike Manufacturure:   \(bike.bikeManufacturer) ")
+                                     .padding()
+                     Text("Bike Year:  \(bike.bikeYear)").padding()
+        }.background(Color.gray.opacity(0.2).cornerRadius(10))
+        }
     Section("Engine Details"){
         VStack{
              Text("EngMake:     \(bike.details["engMake"]!) ")
@@ -40,9 +43,9 @@ struct BikeDetail: View {
                  
             }
          }.padding()
-         }
+         }.background(Color.gray.opacity(0.2).cornerRadius(10))
             
-        Section("Body"){
+        Section("Body Details"){
          VStack{ //body Stuff
             
              Text("bodyMake:    \(bike.bodyMake) ")
@@ -56,15 +59,16 @@ struct BikeDetail: View {
                  .padding()
             
          }.padding()
-            }
+            }.background(Color.gray.opacity(0.2).cornerRadius(10))
         
          
         .navigationTitle("Racer Name's  \(bike.id)")
                 .navigationBarTitleDisplayMode(.inline)
 
+            }
+        }
      }
-     }
- }
+ 
 
 
 struct BikeDetail_Previews: PreviewProvider {

@@ -154,7 +154,7 @@ struct BikeAdd: View {
                 
             }
             ).padding()
-            
+            //used for speeding up testing, remove from final 
             Button("Fill Bike", action:{
                 addBike()
                 NavigationLink("BikeList", destination: BikeList(user: $user))
