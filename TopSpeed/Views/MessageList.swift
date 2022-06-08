@@ -10,6 +10,7 @@ import SwiftUI
 struct MessageList: View {
     @Binding var user: User
     var body: some View {
+        
        
         if(user.messages.last?.id == 0) {
             Text("No messages found\nplease refresh or check back later")
@@ -29,8 +30,9 @@ struct MessageList: View {
             
         }
          
-        
+    
     }
+        
 }
 
 struct MessageList_Previews: PreviewProvider {

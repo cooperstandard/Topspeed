@@ -16,6 +16,9 @@ class Handler {
         getRacer(user: user)
         getMessages(user: user)
         getBikes(user: user)
+        getRaces(user: user, filter: "future")
+        getRaces(user: user, filter: "next")
+        getRaces(user: user, filter: "past")
         
         
     }
@@ -210,39 +213,97 @@ class Handler {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type") // change as per server requirements
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("Bearer \(user.token)", forHTTPHeaderField: "Authorization")
+        
 
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
             if let error = error {
-                print(error)
+                print("Request Error: \(error.localizedDescription)")
+                return
+            }
+            
+            // ensure there is valid response code returned from this HTTP response
+            let httpResponse = response as! HTTPURLResponse
+            
+            if !(200...299).contains(httpResponse.statusCode) {
+                print(httpResponse.statusCode)
+            }
+            
+            
+            // ensure there is data returned
+            guard let responseData = data else {
+                print("nil Data received from the server")
                 return
             }
             
             do {
-                if let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String: Any] {
+                if let jsonResponse = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers) as? [String: Any] {
                     //This is a terrible way to do this. I could not find a better way.
                     //print(jsonResponse["messages"] ?? "No messages in server response")
-                    print(jsonResponse)
+                    //print(jsonResponse)
+                    if filter == "past" {
+                        user.past = []
+                    } else if filter == "future" {
+                        user.future = []
+                    }
                     
-                        //print(user.bikes)
-                } else {
-                    print("json response contained no bikes")
+                    if let array = jsonResponse["races"] as? NSArray {
+                        for obj in array {
+                            if var dict = obj as? NSDictionary as? Dictionary<String,Any> {
+                                var race = Race(racerID: dict.removeValue(forKey: "racerID") as! Int, heatID: dict.removeValue(forKey: "heatID") as! Int, motoID: dict.removeValue(forKey: "motoID") as! Int, opponentID: dict.removeValue(forKey: "opponentID") as? Int, startTime: (dict.removeValue(forKey: "startTime") as! String), details: [:])
+                                                   
+                                for key in dict.keys {
+                                    //fills in the bikes 'details' dictionary with the remaining fields in dict
+                                    race.details[key] = "\(dict[key]!)"
+                                }
+                                
+                                if filter == "past" {
+                                    user.past?.append(Race.copy(other: race))
+                                } else if filter == "next" {
+                                    user.next = Race.copy(other: race)
+                                } else if filter == "future"{
+                                    user.future?.append(Race.copy(other: race))
+                                }
+                                
+                            }
+                        }
                         
+                        //print("future races: \(user.future)")
+                        
+                    } else {
+                        print("json response contained no races")
+                        
+                    }
+                    
+                    
+                    print("\(filter) race(s) successfully retrieved")
+                    /*
+                    if filter == "past" {
+                        print("past race count")
+                        print(user.past?.count)
+                    } else if filter == "future" {
+                        print("future race count")
+                        print(user.future?.count)
+                    } else {
+                        print(user.next)
+                    }
+                     */
+                    
+
+                } else {
+                    print("data maybe corrupted or in wrong format")
+                    
+                    print(String(data: responseData, encoding: String.Encoding.utf8)!)
+                    throw URLError(.badServerResponse)
+                    
                 }
                      
             } catch let error {
                 print(error.localizedDescription)
             }
-            /*
-            if let data = data {
-                if let response = try? JSONDecoder().decode(Racer.self, from: data) {
-                    user.racer = response
-                    print("get racer request succeeded")
-                    return
-                }
-             */
-            
-             
-        }.resume()
+        }
+        
+        task.resume()
         
     }
     
@@ -476,6 +537,8 @@ class Handler {
                     print("data maybe corrupted or in wrong format")
                     throw URLError(.badServerResponse)
                 }
+                //call signin here
+                //signIn(email: email, pass: <#T##String#>, user: <#T##User#>)
             } catch let error {
                 print(error.localizedDescription)
             }
