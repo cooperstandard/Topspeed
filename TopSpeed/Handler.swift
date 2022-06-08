@@ -336,11 +336,10 @@ class Handler {
             }
             
             // ensure there is valid response code returned from this HTTP response
-            guard let httpResponse = response as? HTTPURLResponse,
-                (200...299).contains(httpResponse.statusCode)
-            else {
-                print("Invalid Response received from the server")
-                return
+            let httpResponse = response as! HTTPURLResponse
+            
+            if !(200...299).contains(httpResponse.statusCode) {
+                print("status code: \(httpResponse.statusCode)")
             }
             
             // ensure there is data returned

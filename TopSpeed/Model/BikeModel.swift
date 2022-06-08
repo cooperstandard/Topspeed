@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Bike: Codable {
+struct Bike: Codable, Hashable{
     var id: Int
     var racerID: Int
     var bikeNum: Int
@@ -16,7 +16,35 @@ struct Bike: Codable {
     var bikeYear: Int
     var bodyMake: String
     var bodyYear: Int
-    
     var details: [String: String]
+    
+    init(racerID: Int){
+        self.id = 0
+        self.racerID = racerID
+        self.bikeNum = 0
+        self.bikeManufacturer = ""
+        self.bikeModel = ""
+        self.bikeYear = 0
+        self.bodyMake = ""
+        self.bodyYear = 0
+        self.details = [:]
+    }
+    
+    init(id: Int, racerID: Int, bikeNum: Int, bikeManufacturer: String, bikeModel: String, bikeYear: Int, bodyMake: String, bodyYear: Int ,details: [String: String]){
+        self.id = id
+        self.racerID = racerID
+        self.bikeNum = bikeNum
+        self.bikeManufacturer = bikeManufacturer
+        self.bikeModel = bikeModel
+        self.bikeYear = bikeYear
+        self.bodyMake = bodyMake
+        self.bodyYear = bodyYear
+        self.details = details
+    }
+    
+    static func == (lhs: Bike, rhs: Bike) -> Bool {
+        return (lhs.id == rhs.id)
+    }
+   
 }
 
