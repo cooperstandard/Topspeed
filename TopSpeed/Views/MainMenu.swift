@@ -10,7 +10,7 @@ import SwiftUI
 struct MainMenu: View {
     @State var id = 1;
     @Binding var user: User
-    let racer = Racer(racerID: 0)
+   let racer1 = Racer(racerID: 1)
     /*
     let bikeEx = Bike(racerID: 1)
     let engMake = ""
@@ -79,7 +79,7 @@ struct MainMenu: View {
                         
                         
                     
-                    NavigationLink("Tech Card", destination: TechCardDetail(user: $user, tech: TechCard(racer: racer)))
+                    NavigationLink("Tech Card", destination: TechCardDetail(user: $user, tech: TechCard()))
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
                         .background(Color.green.opacity(0.2).cornerRadius(10))

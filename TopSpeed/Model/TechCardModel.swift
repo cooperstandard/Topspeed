@@ -21,6 +21,7 @@ struct TechCard: Codable {
     var licenseExpr: String?
     
     //var techDetails: [String: String]
+    
     /*  can make a dictionary of tech deails with this stuff
      var racerName: String  //racer.racerName
      var address: String //racer.racerAddress // city state and zip as well
@@ -35,14 +36,14 @@ struct TechCard: Codable {
      var liscenceExp: String
      */
     
-    init(racer: Racer){
-        self.techCardID = 0
-        self.racer = racer
-        self.bike = nil
-        self.licenseExpr = ""
-        self.licenseExpr = ""
-        self.rejectionNote = ""
-        self.approved = false        
-    }
-    
+    init(){
+           self.techCardID = 0
+           self.racer = Racer(racerID: 1)
+           self.bike = nil
+           self.licenseExpr = ""
+           self.licenseExpr = ""
+           self.rejectionNote = ""
+           self.approved = false
+       }
+
 }

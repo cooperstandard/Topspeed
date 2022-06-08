@@ -21,7 +21,6 @@ struct BikeAdd: View {
 
     var body: some View {
     
-        NavigationView{
         ScrollView{
             VStack{
                 Text("General").font(.title3)
@@ -167,7 +166,7 @@ struct BikeAdd: View {
         }
         }
         
-    }
+    
 
     func addBike(){
         bike.racerID = 1

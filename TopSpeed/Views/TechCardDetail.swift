@@ -13,7 +13,7 @@ struct TechCardDetail: View {
     
     @Binding var user: User
     @State var tech: TechCard
-    @State private var showAddScreen = false
+    // @State private var showAddScreen = false
     @State private var licenseNum = ""
     @State private var licenseExpr = ""
     
@@ -22,21 +22,25 @@ struct TechCardDetail: View {
     
         
     }
+    
     var body: some View {
         
-
+        ScrollView{
         VStack{
             HStack{
                 Text("Racer Details").font(.title3)
                 Spacer()
             }
+            VStack{
             // set up if else to take components if they arent in a profile
             Text(user.racer!.racerName!)
-            Text(user.racer!.racerAddress!).padding(.bottom)
-            HStack{
-            Text("Enter license information:")
-            Spacer()
-            }
+            Text(user.racer!.racerAddress!)
+            }.padding().background(Color.gray.opacity(0.2).cornerRadius(10))
+            VStack{
+                HStack{
+                Text("Enter license information:")
+                Spacer()
+                }
             HStack{
                 Text("License #:")
                 TextField("Enter Text Here", text: $licenseNum)
@@ -50,27 +54,36 @@ struct TechCardDetail: View {
                 TextField("Enter Text Here", text: $licenseExpr)
                     .padding()
                     .background(Color.gray.opacity(0.2).cornerRadius(10))
+                    
             }//tech.licenseExpr = licenseExpr
+            }.padding()
+            //.padding().background(Color.gray.opacity(0.2).cornerRadius(10)).padding(.horizontal)
         }.padding()
+        
+    
         VStack{
             // make a popUp list
-            Text("Select a bike:")
-            Picker("Bike", selection: $tech.bike){
-                    List(user.bikes!, id: \.id) {bike in
-                        Text("\(bike.bikeManufacturer):Number  \(bike.bikeNum), Year \(bike.bikeYear) ")
+            Picker("Select A Bike", selection: $tech.bike){
+                    ForEach(user.bikes!, id: \.id) { bike in
+                        Text("\(bike.bikeManufacturer) \t|\t Number \(bike.id)")
                     }
-                    
                 }
     
-        }.pickerStyle(.wheel)
-            .padding(.bottom)
+        }.pickerStyle(.wheel).padding()
+        
         VStack{
-            Text("Bike Details:")
+            HStack{
+                Text("Bike Details:").font(.title3)
+                Spacer()
+            }.padding(.horizontal)
+          
             
-        }
+            
+        }.padding()
         Spacer()
         }
     }
+}
    
    
      //   .sheet(isPresented: $showAddScreen, content: BikeList)
@@ -82,7 +95,7 @@ struct TechCardDetail: View {
 
 struct TechCardDetail_Previews: PreviewProvider {
     @State static var user = User(email: "test_", pass: "password")
-    @State static var techCard = TechCard(racer: user.racer!)
+    @State static var techCard = TechCard()
     static var previews: some View {
         TechCardDetail(user:$user, tech: techCard)
     }
