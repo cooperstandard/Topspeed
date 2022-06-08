@@ -28,7 +28,9 @@ struct BikeList: View {
             
             
         }
-        } /*
+        }
+        Spacer()
+        /*
             .toolbar {
                 Button(action: { }, label: {
                     Label("Refresh Bikes",
