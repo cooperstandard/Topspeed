@@ -22,7 +22,7 @@ struct BikeList: View {
         } else {
             
             List(user.bikes!, id: \.id) {bike in
-                NavigationLink("\(bike.bikeManufacturer):Number  \(bike.bikeNum), Year \(bike.bikeYear) ", destination: BikeDetail(user: $user, bike: bike)) //year and manufacturer
+                NavigationLink("\(bike.bikeManufacturer):Number  \(bike.id), Year \(bike.bikeYear) ", destination: BikeDetail(user: $user, bike: bike)) //year and manufacturer
                 
             }
             

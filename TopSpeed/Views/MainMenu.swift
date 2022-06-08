@@ -108,6 +108,12 @@ struct MainMenu: View {
 
                 
                 }
+                //future features 
+                NavigationLink("Tech Check", destination: TechCheckView(user: $user, techCheck: TechCheck()))
+                    .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(.black)
+                    .background(Color.blue.opacity(0.2).cornerRadius(10))
+                    .padding()
                 
                 //for testing bikes
                 HStack{
