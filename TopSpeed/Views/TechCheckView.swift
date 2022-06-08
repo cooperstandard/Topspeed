@@ -54,6 +54,7 @@ struct TechCheckView: View {
                     }
                 }
             }
+            /*
             Section{
                 ForEach(techBoolKeys, id: \.self){
                     key in
@@ -70,7 +71,7 @@ struct TechCheckView: View {
                         TextField("Enter here",text: bindingString(for: key))
                     }
                 }
-            }
+            }*/
         }
             
         Button(action: {
