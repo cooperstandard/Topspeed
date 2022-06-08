@@ -22,6 +22,8 @@ struct BikeDetail: View {
                  .fontWeight(.medium)
              Text("Bike Manufacturure:   \(bike.bikeManufacturer) ")
                              .padding()
+             Text("Bike Year:  \(bike.bikeYear)").padding()
+             
     Section("Engine Details"){
         VStack{
              Text("EngMake:     \(bike.details["engMake"]!) ")

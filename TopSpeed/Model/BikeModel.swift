@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Bike: Codable {
+struct Bike: Codable, Hashable{
     var id: Int
     var racerID: Int
     var bikeNum: Int
@@ -40,6 +40,10 @@ struct Bike: Codable {
         self.bodyMake = bodyMake
         self.bodyYear = bodyYear
         self.details = details
+    }
+    
+    static func == (lhs: Bike, rhs: Bike) -> Bool {
+        return (lhs.id == rhs.id)
     }
    
 }
