@@ -29,21 +29,27 @@ struct MainMenu: View {
         NavigationView {
             //ScrollView{
             VStack{
-               
+                VStack{
+                    HStack{
+                        Text("Profile:").font(.title3).foregroundColor(.black)
+                    Spacer()
+                    }
                 HStack{
                 NavigationLink(destination: RacerDetailView(user: $user)) {
                     
-                    Image("blankProfile")
+                    Image("Boone")
                         .resizable()
                         .scaledToFit()
+                        .frame(width: 150, height: 150)
                     VStack{
                     Text("Racer Name").foregroundColor(.black)
                     Text("12 - 4").foregroundColor(.black)//("/*\(user.racer!.wins!) -\(user.racer!.losses!)")
                         }
                     }
-                    .padding()
+                }
+                }   .padding()
                     .background(Color.gray.opacity(0.2).cornerRadius(10))
-                }.padding(.horizontal)
+                .padding(.horizontal)
                
                 
                 //.onAppear(perform: loadData)
@@ -52,13 +58,13 @@ struct MainMenu: View {
                     NavigationLink("Bikes", destination: BikeList(user: $user))
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
-                        .background(Color.red.cornerRadius(10))
+                        .background(Color.gray.opacity(0.2).cornerRadius(10))
                         .padding()
 
                     NavigationLink("Races", destination: RaceList(races: []))
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
-                        .background(Color.red.cornerRadius(10))
+                        .background(Color.gray.opacity(0.2).cornerRadius(10))
                         .padding()
 
                 }
@@ -67,7 +73,7 @@ struct MainMenu: View {
                     NavigationLink("Add Bike", destination: BikeAdd(user: $user, bike: Bike(racerID: 0)))// racer id gets set with post bike
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
-                        .background(Color.red.cornerRadius(10))
+                        .background(Color.gray.opacity(0.2).cornerRadius(10))
                         .padding()
 
                         
@@ -76,7 +82,7 @@ struct MainMenu: View {
                     NavigationLink("Tech Card", destination: TechCardDetail(user: $user, tech: TechCard(racer: racer)))
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
-                        .background(Color.red .cornerRadius(10))
+                        .background(Color.green.opacity(0.2).cornerRadius(10))
                         .padding()
 
                 }
@@ -85,7 +91,7 @@ struct MainMenu: View {
                     NavigationLink("Messages", destination: MessageList(user: $user))
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
-                        .background(Color.red .cornerRadius(10))
+                        .background(Color.blue.opacity(0.2).cornerRadius(10))
                         .padding()
 
                         
@@ -94,7 +100,7 @@ struct MainMenu: View {
                     NavigationLink("Current Race", destination: RaceDetail())
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
-                        .background(Color .red.cornerRadius(10))
+                        .background(Color.red.opacity(0.2).cornerRadius(10))
                         .padding()
 
                 

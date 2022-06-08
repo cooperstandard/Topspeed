@@ -32,36 +32,42 @@ struct TechCardDetail: View {
             }
             // set up if else to take components if they arent in a profile
             Text(user.racer!.racerName!)
-            Text(user.racer!.racerAddress!)
+            Text(user.racer!.racerAddress!).padding(.bottom)
+            HStack{
+            Text("Enter license information:")
+            Spacer()
+            }
             HStack{
                 Text("License #:")
                 TextField("Enter Text Here", text: $licenseNum)
+                    .padding()
+                    .background(Color.gray.opacity(0.2).cornerRadius(10))
                 
             }
                 //tech.licenseNum = licenseNum
             HStack{
                 Text("License Exp:")
                 TextField("Enter Text Here", text: $licenseExpr)
+                    .padding()
+                    .background(Color.gray.opacity(0.2).cornerRadius(10))
             }//tech.licenseExpr = licenseExpr
-                
-            
-        
-        }
+        }.padding()
         VStack{
             // make a popUp list
+            Text("Select a bike:")
             Picker("Bike", selection: $tech.bike){
-                if(user.bikes?.last?.id == 0) {
-                    Text("No bikes found")
-                        .font(.title)
-
-                } else {
                     List(user.bikes!, id: \.id) {bike in
                         Text("\(bike.bikeManufacturer):Number  \(bike.bikeNum), Year \(bike.bikeYear) ")
                     }
                     
                 }
     
-            }.pickerStyle(.wheel)
+        }.pickerStyle(.wheel)
+            .padding(.bottom)
+        VStack{
+            Text("Bike Details:")
+            
+        }
         Spacer()
         }
     }
@@ -81,4 +87,4 @@ struct TechCardDetail_Previews: PreviewProvider {
         TechCardDetail(user:$user, tech: techCard)
     }
 }
-}
+
