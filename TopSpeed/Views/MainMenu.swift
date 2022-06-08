@@ -58,13 +58,13 @@ struct MainMenu: View {
                     NavigationLink("Bikes", destination: BikeList(user: $user))
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
-                        .background(Color.gray.opacity(0.2).cornerRadius(10))
+                        .background(Color.blue.opacity(0.2).cornerRadius(10))
                         .padding()
 
                     NavigationLink("Races", destination: RaceList(user: $user))
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
-                        .background(Color.gray.opacity(0.2).cornerRadius(10))
+                        .background(Color.blue.opacity(0.2).cornerRadius(10))
                         .padding()
 
                 }
@@ -73,7 +73,7 @@ struct MainMenu: View {
                     NavigationLink("Add Bike", destination: BikeAdd(user: $user, bike: Bike(racerID: 0)))// racer id gets set with post bike
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
-                        .background(Color.gray.opacity(0.2).cornerRadius(10))
+                        .background(Color.blue.opacity(0.2).cornerRadius(10))
                         .padding()
 
                         
@@ -82,7 +82,7 @@ struct MainMenu: View {
                     NavigationLink("Tech Card", destination: TechCardDetail(user: $user, tech: TechCard()))
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
-                        .background(Color.green.opacity(0.2).cornerRadius(10))
+                        .background(Color.blue.opacity(0.2).cornerRadius(10))
                         .padding()
 
                 }
@@ -100,7 +100,7 @@ struct MainMenu: View {
                     NavigationLink("Current Race", destination: RaceDetail(race: user.next ?? Race(racerID: 0, heatID: 0, motoID: 0, opponentID: 12, startTime: "unknown", details: [:])))
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
-                        .background(Color.red.opacity(0.2).cornerRadius(10))
+                        .background(Color.blue.opacity(0.2).cornerRadius(10))
                         .padding()
 
                 

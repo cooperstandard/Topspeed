@@ -21,7 +21,7 @@ struct MessageList: View {
         } else {
             
             List(user.messages, id: \.id) { message in
-                NavigationLink(message.title, destination: Text(message.body))
+                NavigationLink(message.title, destination: MessageDetailView(user: $user, message: message))
                 
             }.refreshable {
                Handler.getMessages(user: user)

@@ -11,6 +11,9 @@
 		1CAD54AF284E9C1200E13D74 /* BikeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAD54AE284E9C1200E13D74 /* BikeList.swift */; };
 		1CAD54B7284EA3B200E13D74 /* BikeAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAD54B6284EA3B200E13D74 /* BikeAdd.swift */; };
 		1CAD54BD28500E8300E13D74 /* TechCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAD54BC28500E8300E13D74 /* TechCheckModel.swift */; };
+		1CAD54BF28503DFB00E13D74 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAD54BE28503DFB00E13D74 /* SignUp.swift */; };
+		1CAD54C128510F3600E13D74 /* TechCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAD54C028510F3600E13D74 /* TechCheckView.swift */; };
+		1CAD54C328511C9A00E13D74 /* MessageDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAD54C228511C9A00E13D74 /* MessageDetailView.swift */; };
 		B829E04F2846E58E007DC972 /* MessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B829E04E2846E58E007DC972 /* MessageList.swift */; };
 		B82F5D48283F177A00AC4AFB /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82F5D47283F177900AC4AFB /* MessageModel.swift */; };
 		B82F5D4A283F178400AC4AFB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82F5D49283F178400AC4AFB /* UserModel.swift */; };
@@ -37,6 +40,9 @@
 		1CAD54AE284E9C1200E13D74 /* BikeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeList.swift; sourceTree = "<group>"; };
 		1CAD54B6284EA3B200E13D74 /* BikeAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeAdd.swift; sourceTree = "<group>"; };
 		1CAD54BC28500E8300E13D74 /* TechCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechCheckModel.swift; sourceTree = "<group>"; };
+		1CAD54BE28503DFB00E13D74 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		1CAD54C028510F3600E13D74 /* TechCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechCheckView.swift; sourceTree = "<group>"; };
+		1CAD54C228511C9A00E13D74 /* MessageDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailView.swift; sourceTree = "<group>"; };
 		B829E04E2846E58E007DC972 /* MessageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageList.swift; sourceTree = "<group>"; };
 		B82F5D47283F177900AC4AFB /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		B82F5D49283F178400AC4AFB /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -126,9 +132,12 @@
 				1CAD54AE284E9C1200E13D74 /* BikeList.swift */,
 				B8921A9F2820DD6200542602 /* BracketDetail.swift */,
 				B89C151D284156360000857C /* LogIn.swift */,
+				1CAD54BE28503DFB00E13D74 /* SignUp.swift */,
 				B829E04E2846E58E007DC972 /* MessageList.swift */,
 				1CAD54AC284E9B3D00E13D74 /* BikeDetail.swift */,
 				1CAD54B6284EA3B200E13D74 /* BikeAdd.swift */,
+				1CAD54C028510F3600E13D74 /* TechCheckView.swift */,
+				1CAD54C228511C9A00E13D74 /* MessageDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,6 +236,7 @@
 				B8921A9A2820DCE700542602 /* RaceList.swift in Sources */,
 				B8921A982820DCA300542602 /* TechCardList.swift in Sources */,
 				B82F5D48283F177A00AC4AFB /* MessageModel.swift in Sources */,
+				1CAD54BF28503DFB00E13D74 /* SignUp.swift in Sources */,
 				B8921AA02820DD6200542602 /* BracketDetail.swift in Sources */,
 				B89C151E284156360000857C /* LogIn.swift in Sources */,
 				B82F5D4D283F198E00AC4AFB /* Handler.swift in Sources */,
@@ -235,6 +245,8 @@
 				1CAD54B7284EA3B200E13D74 /* BikeAdd.swift in Sources */,
 				1CAD54BD28500E8300E13D74 /* TechCheckModel.swift in Sources */,
 				1CAD54AF284E9C1200E13D74 /* BikeList.swift in Sources */,
+				1CAD54C128510F3600E13D74 /* TechCheckView.swift in Sources */,
+				1CAD54C328511C9A00E13D74 /* MessageDetailView.swift in Sources */,
 				B82F5D4A283F178400AC4AFB /* UserModel.swift in Sources */,
 				B852084F2821C84500FECBB5 /* RaceModel.swift in Sources */,
 				B829E04F2846E58E007DC972 /* MessageList.swift in Sources */,
