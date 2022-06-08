@@ -10,6 +10,12 @@ import SwiftUI
 struct BikeAdd: View {
     @Binding var user: User
     @State var bike: Bike
+    @State var bikeNum: Int = 0
+    @State var bikeManu: String = ""
+    @State var bikeModel: String = ""
+    @State var bikeYear: Int = 0
+    @State var bodyYear: Int = 0
+    @State var bodyMake: String = ""
     @State var wheelBase: String = ""
     @State var engMake: String = ""
     @State var engYear: String = ""
@@ -28,7 +34,7 @@ struct BikeAdd: View {
                     Text("Bike Number ")
                         .padding()
                         .font(.subheadline)
-                    TextField("Bike Number: ", value: $bike.bikeNum, formatter: NumberFormatter())
+                    TextField("Bike Number: ", value: $bikeNum, formatter: NumberFormatter())
                         .padding()
                         .background(Color.gray.opacity(0.2).cornerRadius(10))
                 }
@@ -36,19 +42,19 @@ struct BikeAdd: View {
                     Text("Bike Manufacturer  ")
                         .padding()
                         .font(.subheadline)
-                    TextField("Honda ", text: $bike.bikeManufacturer )
+                    TextField("Honda ", text: $bikeManu)
                         .padding()
                         .background(Color.gray.opacity(0.2).cornerRadius(10))
                 }
                 HStack{
                     Text("Bike Model:  ").padding().font(.subheadline)
-                    TextField("Honda", text: $bike.bikeModel)
+                    TextField("Honda", text: $bikeModel)
                         .padding()
                         .background(Color.gray.opacity(0.2).cornerRadius(10))
                 }
                 HStack{
                     Text("Bike Year ").padding().font(.subheadline)
-                    TextField( "Year", value: $bike.bikeYear, formatter: NumberFormatter())
+                    TextField( "Year", value: $bikeYear, formatter: NumberFormatter())
                     // test out .onSubmit call
                         .padding()
                         .background(Color.gray.opacity(0.2).cornerRadius(10))
@@ -62,7 +68,7 @@ struct BikeAdd: View {
                     Text("Body Make: ")
                         .padding()
                         .font(.subheadline)
-                    TextField("Honda ", text: $bike.bodyMake)
+                    TextField("Honda ", text: $bodyMake)
                         .padding()
                         .background(Color.gray.opacity(0.2).cornerRadius(10))
                 }
@@ -70,7 +76,7 @@ struct BikeAdd: View {
                     Text("Body Year:")
                         .padding()
                         .font(.subheadline)
-                    TextField("2000 ", value: $bike.bodyYear, formatter: NumberFormatter())
+                    TextField("2000 ", value: $bodyYear, formatter: NumberFormatter())
                         .padding()
                         .background(Color.gray.opacity(0.2).cornerRadius(10))
                 }
@@ -141,8 +147,8 @@ struct BikeAdd: View {
             }.padding(.horizontal)
             
             Button(action: {
-                addPostBike(user: user,bike: bike)
-                
+                //addPostBike(user: user,bike: bike)
+                saveDetails()
                 
             }, label: {
                 Text("Save".uppercased())
@@ -154,10 +160,24 @@ struct BikeAdd: View {
                 
             }
             ).padding()
+            Button(action: {
+                saveDetails()
+                addPostBike(user: user,bike: bike)
+
+            }, label: {
+                Text("Send".uppercased())
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue.cornerRadius(10))
+                    .foregroundColor(.white)
+                    .font(.headline)
+                
+            }
+            ).padding()
             //used for speeding up testing, remove from final 
             Button("Fill Bike", action:{
-                addBike()
-                NavigationLink("BikeList", destination: BikeList(user: $user))
+                fillBike()
+               
             })
         
         //.navigationTitle("Add New Bike")
@@ -168,8 +188,14 @@ struct BikeAdd: View {
         
     
 
-    func addBike(){
-        bike.racerID = 1
+    func fillBike(){
+        
+        bikeNum = 23
+        bodyYear = 2020
+        bodyMake = "Kawa"
+        bikeManu = "Manufacturer 4"
+        bikeModel = "Fast"
+        bikeYear = 2022
         engMake = "Honda"
         engYear = "2014"
         cubicCM = "50.8"
@@ -177,14 +203,17 @@ struct BikeAdd: View {
         fuelType = "Nitro"
         shippingWT = "500.25"
         numCylinders = "4"
-        bike.bodyYear = 2020
-        bike.bodyMake = "Kawa"
-        bike.bikeManufacturer = "Manufacturer 4"
-        bike.bikeModel = "Fast"
+        
+    
 
     }
     func saveDetails(){
-        bike.racerID = user.racer!.racerID
+        bike.bodyMake = bodyMake
+        bike.bodyYear = bodyYear
+        bike.bikeNum = bikeNum
+        bike.bikeYear = bikeYear
+        bike.bikeModel = bikeModel
+        bike.bikeManufacturer = bikeManu
         bike.details["cubicCM"] = cubicCM
         bike.details.updateValue(engMake, forKey: "engMake")
         bike.details.updateValue(engYear, forKey: "engYear")
@@ -192,6 +221,7 @@ struct BikeAdd: View {
         bike.details.updateValue(fuelType, forKey: "fuelType")
         bike.details.updateValue(shippingWT, forKey: "shippingWT")
         bike.details.updateValue(numCylinders, forKey: "numClyinders")
+        print(bike)
     }
     func addPostBike (user: User, bike: Bike){
         // saves the bike and posts it as a user
@@ -222,7 +252,7 @@ struct BikeAdd: View {
 struct BikeAdd_Previews: PreviewProvider {
     @State static var user = User(email: "test_", pass: "password")
     
-    @State static var bikeEx = Bike(racerID: 0)
+    @State static var bikeEx = Bike(racerID: 1)
     /*
     @State static var engMake = ""
     @State static var engYear = ""
