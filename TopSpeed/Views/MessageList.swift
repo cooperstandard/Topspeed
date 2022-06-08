@@ -11,6 +11,7 @@ struct MessageList: View {
     @Binding var user: User
     var body: some View {
         
+       
         if(user.messages.last?.id == 0) {
             Text("No messages found\nplease refresh or check back later")
                 .font(.title)
@@ -22,13 +23,16 @@ struct MessageList: View {
             List(user.messages, id: \.id) { message in
                 NavigationLink(message.title, destination: MessageDetailView(user: $user, message: message))
                 
+            }.refreshable {
+               Handler.getMessages(user: user)
             }
             
             
         }
          
-        
+    
     }
+        
 }
 
 struct MessageList_Previews: PreviewProvider {

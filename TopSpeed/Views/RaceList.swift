@@ -10,14 +10,44 @@
 import SwiftUI
 
 struct RaceList: View {
-    var races : [Race]
+    @Binding var user: User
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text("Past Races: ")
+                .padding()
+            if user.past != nil {
+                List(user.past!, id: \.motoID) { race in
+                    NavigationLink("Moto id: \(race.motoID)", destination: RaceDetail(race: race))
+                    
+                }
+            } else {
+                Text("No Past Races to Display")
+            }
+            Spacer()
+            Text("Future Races: ")
+                .padding()
+            if user.future != nil {
+                List(user.future!, id: \.motoID) { race in
+                    NavigationLink("Moto id: \(race.motoID)", destination: RaceDetail(race: race))
+                    
+                }
+            } else {
+                Text("No Future Races to Display")
+            }
+            
+            
+            
+            
+            
+            
+        }
+        .navigationBarTitleDisplayMode(NavigationBarItem.TitleDisplayMode.inline)
     }
 }
 
 struct RaceList_Previews: PreviewProvider {
+    @State static var user = User(email: "test_", pass: "password")
     static var previews: some View {
-        RaceList(races: [])
+        RaceList(user: $user)
     }
 }

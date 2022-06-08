@@ -61,7 +61,7 @@ struct MainMenu: View {
                         .background(Color.blue.opacity(0.2).cornerRadius(10))
                         .padding()
 
-                    NavigationLink("Races", destination: RaceList(races: []))
+                    NavigationLink("Races", destination: RaceList(user: $user))
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
                         .background(Color.blue.opacity(0.2).cornerRadius(10))
@@ -97,7 +97,7 @@ struct MainMenu: View {
                         
                         
                     
-                    NavigationLink("Tech Card Check", destination: TechCheckView(user: $user, techCheck: TechCheck()))
+                    NavigationLink("Current Race", destination: RaceDetail(race: user.next ?? Race(racerID: 0, heatID: 0, motoID: 0, opponentID: 12, startTime: "unknown", details: [:])))
                         .frame(width: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.black)
                         .background(Color.blue.opacity(0.2).cornerRadius(10))
@@ -114,7 +114,11 @@ struct MainMenu: View {
                     
                     Button("get bikes", action: {Handler.getBikes(user: user)})
                     
-                    Button("print bikes", action: {print(user.bikes)})
+                    Button("print bikes", action: {guard let bikes = user.bikes else {return}
+                                                    for bike in bikes {
+                                                        print(bike)
+                        
+                                                    }})
                     
                 
                 }
