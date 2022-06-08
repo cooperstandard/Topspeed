@@ -198,7 +198,51 @@ class Handler {
     }
     
     
-    static func updateRacer() {
+    static func getRaces(user: User, filter: String) {
+        guard let url = URL(string: "https://swe.cooperstandard.org:8080/racer/\(user.racer!.racerID)/races?filer=\(filter)") else {
+            print("Your API end point is Invalid")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET" //set http method as POST
+        
+        // add headers for the request
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type") // change as per server requirements
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("Bearer \(user.token)", forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            do {
+                if let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String: Any] {
+                    //This is a terrible way to do this. I could not find a better way.
+                    //print(jsonResponse["messages"] ?? "No messages in server response")
+                    print(jsonResponse)
+                    
+                        //print(user.bikes)
+                } else {
+                    print("json response contained no bikes")
+                        
+                }
+                     
+            } catch let error {
+                print(error.localizedDescription)
+            }
+            /*
+            if let data = data {
+                if let response = try? JSONDecoder().decode(Racer.self, from: data) {
+                    user.racer = response
+                    print("get racer request succeeded")
+                    return
+                }
+             */
+            
+             
+        }.resume()
         
     }
     
