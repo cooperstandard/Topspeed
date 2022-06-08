@@ -25,7 +25,7 @@ struct BikeDetail: View {
                      Text("Bike Manufacturure:   \(bike.bikeManufacturer) ")
                                      .padding()
                      Text("Bike Year:  \(bike.bikeYear)").padding()
-        }.background(Color.gray.opacity(0.2).cornerRadius(10))
+        }
         }
     Section("Engine Details"){
         VStack{
@@ -43,7 +43,7 @@ struct BikeDetail: View {
                  
             }
          }.padding()
-         }.background(Color.gray.opacity(0.2).cornerRadius(10))
+         }
             
         Section("Body Details"){
          VStack{ //body Stuff
@@ -59,10 +59,10 @@ struct BikeDetail: View {
                  .padding()
             
          }.padding()
-            }.background(Color.gray.opacity(0.2).cornerRadius(10))
+            }
         
          
-        .navigationTitle("Racer Name's  \(bike.id)")
+        .navigationTitle("\(bike.id)")
                 .navigationBarTitleDisplayMode(.inline)
 
             }
