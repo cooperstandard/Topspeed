@@ -114,22 +114,6 @@ struct MainMenu: View {
                     .background(Color.blue.opacity(0.2).cornerRadius(10))
                     .padding()
                 
-                //for testing bikes
-                HStack{
-                    Button("Post Bike 1", action: {guard let bike = user.bikes?.first else {return};
-                                                    Handler.postBike(user: user, bike: bike)})
-                    
-                    
-                    Button("get bikes", action: {Handler.getBikes(user: user)})
-                    
-                    Button("print bikes", action: {guard let bikes = user.bikes else {return}
-                                                    for bike in bikes {
-                                                        print(bike)
-                        
-                                                    }})
-                    
-                
-                }
                 
                 
             }
